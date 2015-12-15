@@ -1,0 +1,59 @@
+{
+  "name": "redux-state-history",
+  "version": "0.0.0",
+  "description": "Redux store enhancers for tracking and visualizing state changes",
+  "main": "lib/index.js",
+  "author": "Inaki Anduaga",
+  "private": false,
+  "dependencies": {
+    "redux": "^3.0.5",
+    "jsondiffpatch": "^0.1.37"
+  },
+  "devDependencies": {
+    "typescript": "^1.7.3",
+    "ts-loader": "^0.7.2",
+    "tslint-loader": "^2.1.0",
+    "tslint-eslint-rules": "^0.3.0",
+    "tsd": "^0.6.5",
+    "tslint": "3.2.0-dev.1",
+    "babel-core": "^5.8.34",
+    "babel-loader": "^5.4.0",
+    "react-dropzone": "^3.2.2",
+    "mousetrap": "^1.5.3",
+    "extend": "^3.0.0",
+    "rimraf": "^2.4.4"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run build:webpack",
+    "build:webpack": "NODE_ENV=production node ./node_modules/webpack/bin/webpack.js --config config/webpack.prod.js --progress --colors",
+    "typings-install": "node ./node_modules/tsd/build/cli.js install",
+    "typings-update": "node ./node_modules/tsd/build/cli.js update --overwrite --save",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inakianduaga/redux-state-history.git",
+    "path": "inakianduaga/redux-state-history"
+  },
+  "bugs": {
+    "url": "https://github.com/inakianduaga/redux-state-history/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "keywords": [
+    "react",
+    "redux",
+    "flux",
+    "time travel",
+    "devtools"
+  ],
+  "homepage": "https://github.com/inakianduaga/redux-state-history",
+  "engines": {
+    "node": "4.x"
+  }
+}

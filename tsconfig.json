@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "jsx": "preserve",
+        "target": "ES6",
+        "noEmit": false,
+        "experimentalDecorators": true
+    },
+    "exclude" : [
+      "typings",
+      "node_modules"
+    ],
+    "compileOnSave": false
+}
