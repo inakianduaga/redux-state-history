@@ -10,9 +10,9 @@ provides **state** recording/playback (i.e. "time travel") abilities for [redux]
 
 ## Features:
 
-- **Record state history efficiently** locally / on production:  Only state diffs are stored for each state change (untested for large state/long running applications).
-- **Decoupled recording/debugging code**: On production include only recording store enhancer. Locally, use additional debug slider component to navigate/interact with the history.
-- **Import/export histories**:  Play them back locally, including realtime speed.
+- **Record state history efficiently** locally / on production:  Only state diffs are stored for each state change (performance untested for large state/long running applications).
+- **Decoupled recording/debugging code**: On production include only recording store enhancer for small footprint. Locally, use additional debug slider component to navigate/interact with the history.
+- **Import/Export histories**:  Play them back locally, including realtime speed.
 - **Time-travel is "pure"**: That is, state history changes *without refiring the actual actions* that produced said change (so still works for impure/async actions).
 
 ## State history tracker:

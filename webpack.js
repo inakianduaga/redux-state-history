@@ -6,12 +6,21 @@ var APP_DIR = path.join(__dirname, 'src');
 module.exports = {
   devtool: 'source-map', //alt 'source-map', 'eval'
   entry: {
-    StateHistoryTracker: './src/indexStateHistoryTracker.ts',
-    DevSlider: './src/indexDevSlider.ts'
+    index: './src/index.ts',
+    history: './src/stateHistory/index.ts',
+    devtool: './src/devSlider/index.ts'
   },
+  // https://github.com/webpack/webpack/tree/master/examples/multi-part-library
   output: {
-    path: 'lib',
-    filename: '[name].js' // Template based on keys in entry above
+    // path: 'lib',
+    // filename: '[name].js' // Template based on keys in entry above
+    // library: 'redux-state-history',
+    // libraryTarget: 'umd'
+    path: path.join(__dirname, "lib"),
+    filename: "redux-state-history.[name].js",
+    library: ["redux-state-history", "[name]"],
+    libraryTarget: "umd"
+
   },
   module: {
     preLoaders: [
