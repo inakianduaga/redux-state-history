@@ -1,4 +1,5 @@
-# redux-state-history
+Redux State History
+===================
 
 > Redux store enhancers for tracking and visualizing state changes & debugging remote sessions.
 
