@@ -16,7 +16,7 @@ provides **state** recording abilities (i.e. "time travel") on production enviro
 ## State history tracker:
 
 A store enhancer provides the history tracking on each state change, recording the state change, the timestamp of the change, and the action type that produced said change.
-This is independent of the debug slider and can be used in production, requiring minimum dependencies.
+This is independent of the debug slider and can be used in production, requiring minimum dependencies (~16kb gzipped).
 
 - The actual state history is stored in the redux store under `.stateHistory` key.
 

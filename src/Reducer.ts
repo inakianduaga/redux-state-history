@@ -1,7 +1,6 @@
 import { ITrackHistoryState, IJsonDiff, IStoreEnhancer, IReduxCreateStore } from './ITypes';
 import * as Actions from './Actions';
 let jsonDiffPatch: IJsonDiff = require('jsondiffpatch');
-import * as Immutable from 'immutable';
 let extend = require('extend');
 import { compose } from 'redux';
 
