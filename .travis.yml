@@ -3,7 +3,6 @@ dist: trusty
 before_install:
 - docker build -t nodejs ./
 script:
-- mkdir _build
 - docker run --rm -i -v $PWD:/app nodejs install
 - docker run --rm -i -v $PWD:/app nodejs run typings-install
 - docker run --rm -i -v $PWD:/app nodejs run build
