@@ -4,7 +4,7 @@ Redux State History
 > Redux store enhancers for tracking and visualizing state changes & debugging remote sessions.
 
 Inspired by the [redux devtools](https://github.com/gaearon/redux-devtools) and [redux slider monitor](https://github.com/calesce/redux-slider-monitor), this package
-provides **state** recording abilities (i.e. "time travel") on production environments, and recording/playback on locally.
+provides **state** recording abilities (i.e. "time travel") on production environments, and recording/playback locally.
 
 ## Features:
 
