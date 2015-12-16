@@ -1,0 +1,21 @@
+sudo: required
+dist: trusty
+before_install:
+- docker build -t nodejs ./
+script:
+- mkdir _build
+- docker run --rm -i -v $PWD:/app nodejs install
+- docker run --rm -i -v $PWD:/app nodejs run typings-install
+- docker run --rm -i -v $PWD:/app nodejs run build
+- zip -r dist.zip ./lib
+deploy:
+  # Github Release
+  - provider: releases
+    api_key:
+      secure: CsHNHwCdfXSVcN02x06qA/HM4dhn+jmpAP4MMAv22OL5XYPp/CWCJV3z1xeTsF9yazQAxL4Rfi3HJaIqtqvkskQDq/ytD7E77/Dqa7ecq1LKPe1HvA5N1AfpHsYWzoDJmg6xT0VzRdkNgl3crH3ckuNgj2wE0qeVokFq5/HHjm9wwvlNWDPg9po5Iy3bwNZUW5v1RUisfuDj23XmQQdSy+mZ7GOp9HY4pNOk6Iiul+rnexrpp4ICMfltamS33OnugSeVudMeNLuITct37a8EsqhdxMZFf6SOKoP6Nb/1rWMAs+Xx6Dds08sLPS0F1LvQK9JPCxq8nKii/5136HuNuA4yvnwyycB74RDuvOXlvCLSr03GdYOw4NCLgg/ZaEiSoHXYx/vlnI04laXexRc/Jvc3INuJn3PxFuzEjfsTFFVib12lStpT34+k3zqLy+2bvVUGZR+kH4WRDeeoJEw7cDBcfaQ9mFXP64wDJaRgkn8P8Feclcir/wss1h3PBB59Zy7Q6cHebr7fb97Ny54vU4s+USU5K7XnrKfMIdnCFbIgLq7vAATHihRnAcHcUU8y6S2zrHG61+MBntu+cs9/ie3MRw8KtD8IWAH606v1MQjTujTcTdC9An3ulldDeQBPnUZQ9oYEE6sjKsqrmv83Q437GTK0OiSlUBoDC1tdBr8=
+    file:
+    - dist.zip
+    skip_cleanup: true
+    on:
+      repo: inakianduaga/redux-state-history
+      tags: true
