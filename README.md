@@ -1,9 +1,12 @@
-# redux-state-history
+Redux State History
+===================
+
+[![Build Status][travis-image]][travis-url]
 
 > Redux store enhancers for tracking and visualizing state changes & debugging remote sessions.
 
 Inspired by the [redux devtools](https://github.com/gaearon/redux-devtools) and [redux slider monitor](https://github.com/calesce/redux-slider-monitor), this package
-provides **state** recording abilities (i.e. "time travel") on production environments, and recording/playback on locally.
+provides **state** recording abilities (i.e. "time travel") on production environments, and recording/playback locally.
 
 ## Features:
 
@@ -131,3 +134,5 @@ const rootReducer = combineReducers({
 });
 ```
 
+[travis-url]: https://travis-ci.org/inakianduaga/redux-state-history
+[travis-image]: https://travis-ci.org/inakianduaga/redux-state-history.svg?branch=master
