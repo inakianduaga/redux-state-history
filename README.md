@@ -3,18 +3,17 @@ Redux State History
 
 [![Build Status][travis-image]][travis-url]
 
-> Redux store enhancers for tracking and visualizing state changes & debugging remote sessions.
+> Redux store enhancers / component for tracking and visualizing state changes & debugging remote sessions.
 
 Inspired by the [redux devtools](https://github.com/gaearon/redux-devtools) and [redux slider monitor](https://github.com/calesce/redux-slider-monitor), this package
-provides **state** recording abilities (i.e. "time travel") on production environments, and recording/playback locally.
+provides **state** recording/playback (i.e. "time travel") abilities for [redux](https://github.com/rackt/redux) applications.
 
 ## Features:
 
-- Record state history efficiently either locally or on production.
-- Only state diffs are stored for each state change (untested for large state/long running applications).
-- On production, use recording store enhancer only. Locally, use additional debug slider component to navigate/interact with the history.
-- Import/export histories, playback them back locally, including realtime speed.
-- Time-travel is "pure", that is, state history changes **without refiring the actual actions** that produced said change (so still works for impure/async actions).
+- **Record state history efficiently** locally / on production:  Only state diffs are stored for each state change (untested for large state/long running applications).
+- **Decoupled recording/debugging code**: On production include only recording store enhancer. Locally, use additional debug slider component to navigate/interact with the history.
+- **Import/export histories**:  Play them back locally, including realtime speed.
+- **Time-travel is "pure"**: That is, state history changes *without refiring the actual actions* that produced said change (so still works for impure/async actions).
 
 ## State history tracker:
 
@@ -120,9 +119,9 @@ export default class Root extends React.Component<IRootProps, any> {
 };
 ```
 
-#### Note: Combine Reducers:
+#### Note: On Combine Reducers:
 
-If you use combineReducers to set up your root reducer, you need to add a dummy "identity" reducer under the `stateHistory` key, otherwise the combinedReducers function will complain
+If you use redux's `combineReducers` to set up your root reducer, you need to add a dummy "identity" reducer under the `stateHistory` key, otherwise the combinedReducers function [will complain](https://github.com/rackt/redux/pull/879)
 about that key not being predefined and drop it from the state.
 
 ```ts
