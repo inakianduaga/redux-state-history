@@ -1,6 +1,6 @@
 {
   "name": "redux-state-history",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Redux store enhancers for tracking and visualizing state changes",
   "main": "lib/redux-state-history.index.js",
   "author": "Inaki Anduaga",
