@@ -65,6 +65,8 @@ class Component extends React.Component<IProps, any> {
       // maxWidth: '1000px',
       color: 'white',
       padding: '12px 12px 8px',
+      left: 0,
+      boxSizing: 'border-box'
     },
     links: {
       padding: '0px 6px'
