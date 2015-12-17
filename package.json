@@ -31,7 +31,10 @@
     "typings-install": "node ./node_modules/tsd/build/cli.js install",
     "typings-update": "node ./node_modules/tsd/build/cli.js update --overwrite --save",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "preversion": "",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && rm -rf lib"
   },
   "repository": {
     "type": "git",
