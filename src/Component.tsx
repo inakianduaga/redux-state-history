@@ -12,10 +12,6 @@ function selectState(state: ITrackHistoryState) {
   return state;
 };
 
-/**
- * Standard main template with header/footer and inner content based on nested children
- * Hooks to the store and provides general content that can be passed to the children
- */
 class Component extends React.Component<IProps, any> {
 
   private static styles = {
