@@ -62,7 +62,8 @@ class Component extends React.Component<IProps, any> {
       color: 'white',
       padding: '12px 12px 8px',
       left: 0,
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      zIndex: 1000
     },
     links: {
       padding: '0px 6px'
@@ -116,6 +117,8 @@ class Component extends React.Component<IProps, any> {
   };
 
   private selectHistory = (e) => {
+    console.log(e);
+    console.log('here');
     this.props.dispatch(Actions.selectHistory(parseInt(e.target.value, 10)));
   };
 
@@ -151,6 +154,7 @@ class Component extends React.Component<IProps, any> {
   }
 
   public render() {
+    console.log('everything fine here?');
     return (
       <div style={ Component.styles.container }>
         <div>
@@ -163,7 +167,7 @@ class Component extends React.Component<IProps, any> {
             { this.props.stateHistory.current } / { this.props.stateHistory.history.length - 1 }
             &nbsp; &nbsp; &nbsp;
             <button onClick={ this.changeHistory.bind(this, -1)} title='Previous state' style={
-              this.playback.isPlaying || this.props.stateHistory.current === 1 ?
+              this.playback.isPlaying || this.props.stateHistory.current <= 1 ?
                 Object.assign({}, Component.styles.button, Component.styles.disabled) : Component.styles.button
             }>{'<'}</button>
 
