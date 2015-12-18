@@ -17,7 +17,7 @@ module.exports = {
   // },
   // https://github.com/webpack/webpack/tree/master/examples/multi-part-library
   output: {
-    path: path.join(__dirname, "lib"),
+    path: path.join(__dirname, "dist"),
     filename: "redux-state-history.[name].js",
     library: ["redux-state-history", "[name]"],
     libraryTarget: "umd"
@@ -40,7 +40,6 @@ module.exports = {
         include: APP_DIR
       },
     ],
-    // noParse: [ "react" ]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -59,9 +58,6 @@ module.exports = {
   resolve: {
     root: [path.resolve('../src')],
     extensions: ['', '.jsx', '.js', '.tsx', '.ts'],
-    // alias: {
-    //   "react": "dummyReact.js"
-    // }
   },
   tslint: {
     emitErrors: true,

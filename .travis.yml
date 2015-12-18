@@ -6,7 +6,7 @@ script:
 - docker run --rm -i -v $PWD:/app nodejs install
 - docker run --rm -i -v $PWD:/app nodejs run typings-install
 - docker run --rm -i -v $PWD:/app nodejs run build
-- zip -r dist.zip ./lib
+- zip -r dist.zip ./lib ./dist
 deploy:
   # Github Release
   - provider: releases
