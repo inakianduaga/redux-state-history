@@ -24,7 +24,7 @@ This is independent of the debug slider and can be used in production, requiring
 
 ### Installation:
 
-The state history tracker is installed as a store enhancer, in the same way other redux store enhancers like `applyMiddleware`, or the `redux devtools` are added
+The state history tracker is installed as a store enhancer, in the same way other redux store enhancers like `applyMiddleware`, or the `redux devtools` are added. For example
 
 ```ts
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -34,13 +34,12 @@ import thunk from 'redux-thunk';
 let createHistory = require('history/lib/createHashHistory');
 let createLogger = require('redux-logger');
 let { syncReduxAndRouter } = require('redux-simple-router');
-import trackHistory from './Middleware';
+import trackHistory from 'redux-state-history/lib/stateHistory'; // THIS INCLUDES ONLY STATE HISTORY TRACKING FOR PROUCTION
 
 const finalCreateStore = compose(
-  debugStateHistory,
   applyMiddleware(thunk),
   applyMiddleware(createLogger()),
-  trackHistory()                              // STATE HISTORY STORE ENHANCER
+  trackHistory()                              // STATE HISTORY STORE ENHANCER (DO NOT INCLUDE ON PRODUCTION)
   DevTools.instrument()
 )(createStore);
 
@@ -49,14 +48,6 @@ export const history = createHistory();
 export default function configureStore() {
   const store = finalCreateStore(rootReducer);
   syncReduxAndRouter(history, store);
-
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers');
-      store.replaceReducer(nextRootReducer);
-    });
-  }
 
   return store;
 }
@@ -74,15 +65,19 @@ The debug component needs a store enhancer to work (it uses it to replace the cu
 To install it, you follow the same logic as the state history tracker above
 
 ```ts
-// ... some code
+
+// ... imports
+import { Devtool as debugStateHistory, trackHistory } from 'redux-state-history'; // THIS BUNDLE INCLUDES EVERYTHING, USE ONLY ON DEV
+
+// ...
 const finalCreateStore = compose(
-  debugStateHistory,                          // DEBUG SLIDER STORE ENHANCER
+  debugStateHistory,                          // STATE HISTORY DEV TOOLS STORE ENHANCER
   applyMiddleware(thunk),
   applyMiddleware(createLogger()),
   trackHistory()                              // STATE HISTORY STORE ENHANCER
   DevTools.instrument()
 )(createStore);
-// ... more code
+// ...
 ```
 
 **Component**
@@ -93,10 +88,11 @@ root component, you can do
 ```tsx
 import * as React from 'react';
 import { Provider } from 'react-redux';
-import StateHistoryDevTool from './Component.tsx';
+import  from './Component.tsx';
 import Routes from '../routes.tsx';
 import { Router } from 'react-router';
 import { history } from '../store/configureStore.dev';
+import { Component as StateHistoryDevTool } from 'redux-state-history'; // IMPORTS STATE HISTORY DEBUG COMPONENT
 
 type IRootProps = {
   store: any
@@ -111,7 +107,7 @@ export default class Root extends React.Component<IRootProps, any> {
             <Router history={ history }>
               { Routes }
             </Router>
-            <StateHistoryDevTool { ...store.stateHistory } />
+            <StateHistoryDevTool { ...store.stateHistory } /> {/* Place anywhere you like */}
           </div>
         </Provider>
     );
@@ -129,7 +125,7 @@ const rootReducer = combineReducers({
   key: someReducer,
   key2: anotherReducer,
   ...
-  stateHistory: (state = {}, action) => state, // dummy reducer to prevent combineReducers checks from throwing error
+  stateHistory: (state = {}, action) => state, // dummy identity reducer to prevent combineReducers checks from throwing error
 });
 ```
 
