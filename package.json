@@ -28,7 +28,7 @@
     "react-redux": "^4.0.1"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:lib && npm run build:umd && npm run build:umd",
+    "build": "npm run clean && npm run build:lib && npm run build:umd",
     "build:umd": "NODE_ENV=production node ./node_modules/webpack/bin/webpack.js --config webpack.js --progress --colors",
     "build:lib": "npm run build:typescript-compile && npm run build:babel-compile",
     "build:typescript-compile": "npm run clean:tmp && ./node_modules/typescript/bin/tsc --outDir tmp -p ./",

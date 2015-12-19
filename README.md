@@ -115,6 +115,16 @@ export default class Root extends React.Component<IRootProps, any> {
 };
 ```
 
+#### Supress build warnings:
+
+Due to a [jsondiffpatch library issue](https://github.com/benjamine/jsondiffpatch/issues/76),  the following has to be added to the webpack config to prevent warnings during build
+
+```js
+  module: {
+      exprContextCritical: false, // To disable jsondiff warning
+  }
+```
+
 #### Note: On Combine Reducers:
 
 If you use redux's `combineReducers` to set up your root reducer, you need to add a dummy "identity" reducer under the `stateHistory` key, otherwise the combinedReducers function [will complain](https://github.com/rackt/redux/pull/879)
