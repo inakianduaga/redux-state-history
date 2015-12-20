@@ -1,4 +1,6 @@
 lib
+dist
+tmp
 .settings
 .vscode
 .idea

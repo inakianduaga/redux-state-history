@@ -56,12 +56,12 @@ function uploadHistory(state: ITrackHistoryState = initialState, action: Actions
 }
 
 const reducerReducer = (reducers: Redux.Reducer[], state, action) =>
-  reducers.reduce((previous, reducer) => reducer(previous, action), state);
+  reducers.reduce((previousState, reducer) => reducer(previousState, action), state);
 
 /**
- * Add history module reducers to the root reducer (TODO: Use a reducer-reducer)
+ * Add history module reducers to the root reducer
  */
-export function storeEnhancer(reducer: (state, action) => any) {
+export function addExtraReducers(reducer: (state, action) => any) {
   return (state, action) => reducerReducer([uploadHistory, selectHistory, reducer], state, action);
 }
 
@@ -69,7 +69,7 @@ export function storeEnhancer(reducer: (state, action) => any) {
  * Store enhancer that adds state history (stored within the state)
  */
 const debugStateHistory: IStoreEnhancer = (createStore: IReduxCreateStore) =>         // Take an IReduxCreateStore
-    (reducer: Redux.Reducer, state) => createStore(storeEnhancer(reducer), state);    // Return an IReduxCreateStore
+    (reducer: Redux.Reducer, state) => createStore(addExtraReducers(reducer), state);    // Return an IReduxCreateStore
 
 export default debugStateHistory;
 

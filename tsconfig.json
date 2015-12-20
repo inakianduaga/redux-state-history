@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "sourceMap": true,
-    "jsx": "preserve",
+    "sourceMap": false,
+    "jsx": "react",
     "target": "ES6",
     "noEmit": false,
     "experimentalDecorators": true
