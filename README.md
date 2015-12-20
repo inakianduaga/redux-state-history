@@ -8,6 +8,8 @@ Redux State History
 Inspired by the [redux devtools](https://github.com/gaearon/redux-devtools) and [redux slider monitor](https://github.com/calesce/redux-slider-monitor), this package
 provides **state** recording/playback (i.e. "time travel") abilities for [redux](https://github.com/rackt/redux) applications.
 
+## [DEMO](http://inakianduaga.github.io/redux-state-history-example/)
+
 ## Features:
 
 - **Record state history efficiently** locally / on production:  Only state diffs are stored for each state change (performance untested for large state/long running applications).
