@@ -41,8 +41,8 @@ import trackHistory from 'redux-state-history/lib/stateHistory'; // THIS INCLUDE
 const finalCreateStore = compose(
   applyMiddleware(thunk),
   applyMiddleware(createLogger()),
-  trackHistory()                              // STATE HISTORY STORE ENHANCER (DO NOT INCLUDE ON PRODUCTION)
-  DevTools.instrument()
+  trackHistory(),                              // STATE HISTORY STORE ENHANCER (DO NOT INCLUDE ON PRODUCTION)
+  DevTools.instrument(),
 )(createStore);
 
 export const history = createHistory();
