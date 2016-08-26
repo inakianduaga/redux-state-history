@@ -117,8 +117,6 @@ class Component extends React.Component<IProps, any> {
   };
 
   private selectHistory = (e) => {
-    console.log(e);
-    console.log('here');
     this.props.dispatch(Actions.selectHistory(parseInt(e.target.value, 10)));
   };
 
@@ -154,7 +152,6 @@ class Component extends React.Component<IProps, any> {
   }
 
   public render() {
-    console.log('everything fine here?');
     return (
       <div style={ Component.styles.container }>
         <div>
